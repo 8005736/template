@@ -1,5 +1,9 @@
 # template
-Frontend dev template with Less, Pug and xprecise
-My workflow with some defaults and what i use to output html.
-# dependencies:
+Готовая для верстки структура с Less, Pug, xprecise.
+# Зависимости
 Pug :)
+# Workflow
+Папка designs - здесь хранятся макеты
+Папка images - здесь хранятся системные и статичные картинки/иконки, которые нужны для шаблона
+Папка pictures - здесь хранятся все пользовательские картинки (слайдеры, баннеры, новости, цветочки-рюшечки). Папка для контента, который будет меняться
+Папка style - Less/css.
