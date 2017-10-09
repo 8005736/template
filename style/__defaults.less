@@ -1,0 +1,52 @@
+/*********** variables **************/
+@white: #ffffff;
+@black: #000000;
+@font : 'Open Sans', sans-serif;
+/*********** mixins *******************/
+.border-radius(@radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.shadow(@params) {
+    -webkit-box-shadow: @params;
+    -moz-box-shadow: @params;
+    box-shadow: @params;
+}
+
+.image-centered {
+    position: relative;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+        margin: auto;
+    }
+}
+
+.link {
+    &-underlined {
+        text-decoration: underline;
+        &:hover {
+            text-decoration: none;
+        }
+    }
+    &-not-underlined {
+        text-decoration: none;
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+    &-bg {
+        color: @black;
+        background: @white;
+        &:hover {
+            color: @white;
+            background: @black;
+        }
+    }
+}
