@@ -2,7 +2,9 @@
 @white: #ffffff;
 @black: #000000;
 @font : 'Open Sans', sans-serif;
+
 /*********** mixins *******************/
+
 .border-radius(@radius) {
     -webkit-border-radius: @radius;
     -moz-border-radius: @radius;
@@ -28,25 +30,25 @@
     }
 }
 
-.link {
-    &-underlined {
-        text-decoration: underline;
-        &:hover {
-            text-decoration: none;
-        }
-    }
-    &-not-underlined {
+.link-underlined {
+    text-decoration: underline;
+    &:hover {
         text-decoration: none;
-        &:hover {
-            text-decoration: underline;
-        }
     }
-    &-bg {
-        color: @black;
-        background: @white;
-        &:hover {
-            color: @white;
-            background: @black;
-        }
+}
+
+.link-not-underlined {
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.link-bg {
+    color: @black;
+    background: @white;
+    &:hover {
+        color: @white;
+        background: @black;
     }
 }
