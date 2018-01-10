@@ -17,18 +17,19 @@ gulp.task('pug', function() {
         .pipe(gulp.dest('./'))
         .on("end", browserSync.reload)
 });
+
 gulp.task('less', function() {
     return gulp.src('style/*.less')
-        .pipe(less({
-            paths: [path.join(__dirname, 'less', 'includes')]
-        }))
-        .pipe(gulp.dest('./css'))
+        .pipe(less())
+        .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({stream: true}))
 });
+
 /******* watch ********/
 gulp.task('watch', ['browserSync', 'pug', 'less'], function() {
     gulp.watch("style/*.less", ['less']);
     gulp.watch("pug/*.pug", ['pug']);
+    gulp.watch("pug/includes/*.pug", ['pug']);
     gulp.watch('*.html', browserSync.reload);
 });
 /******* default ********/
