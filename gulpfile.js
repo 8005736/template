@@ -1,8 +1,11 @@
 var gulp = require('gulp');
 var pug = require('gulp-pug');
 var less = require('gulp-less');
-var path = require('path');
 var browserSync = require('browser-sync').create();
+
+var plumber = require('gulp-plumber');
+var notify = require('gulp-notify');
+
 /******* tasks ********/
 gulp.task('browserSync', function() {
     browserSync.init({
@@ -11,6 +14,7 @@ gulp.task('browserSync', function() {
 })
 gulp.task('pug', function() {
     return gulp.src('pug/*.pug')
+        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(pug({
             pretty: true
         }))
@@ -20,6 +24,7 @@ gulp.task('pug', function() {
 
 gulp.task('less', function() {
     return gulp.src('style/*.less')
+        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(less())
         .pipe(gulp.dest('css'))
         .pipe(browserSync.reload({stream: true}))
