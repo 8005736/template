@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var pug = require('gulp-pug');
 var less = require('gulp-less');
 var browserSync = require('browser-sync').create();
+var concat = require('gulp-concat');
 
 var plumber = require('gulp-plumber');
 var notify = require('gulp-notify');
@@ -14,6 +15,7 @@ gulp.task('browserSync', function() {
 })
 gulp.task('pug', function() {
     return gulp.src('pug/*.pug')
+
         .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(pug({
             pretty: true
@@ -24,6 +26,7 @@ gulp.task('pug', function() {
 
 gulp.task('less', function() {
     return gulp.src('style/*.less')
+    .pipe(concat('ready.less'))
         .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
         .pipe(less())
         .pipe(gulp.dest('css'))
