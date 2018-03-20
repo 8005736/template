@@ -1,5 +1,7 @@
 doctype html
 html
+	include bemto/bemto
+	- set_bemto_settings({element: '-', modifier: '__', flat_elements: false})
 	include includes/_head
 	body
 		include includes/_header
