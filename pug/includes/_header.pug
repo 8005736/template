@@ -1,1 +1,7 @@
 .header
+.nav
+	- var items = ['О компании','Как мы работаем','Продукция']
+	ul
+		each item in items
+			li
+				a(href="#")= item
