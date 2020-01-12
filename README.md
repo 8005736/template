@@ -3,7 +3,7 @@
 # install
 
 1) git clone https://github.com/8005736/template.git
-2) npm install gulp gulp-cli gulp-less gulp-pug browser-sync gulp-plumber gulp-notify gulp-concat
+2) npm install gulp gulp-cli gulp-less gulp-pug browser-sync gulp-plumber
 
 # Workflow
 Папка designs - здесь хранятся макеты

@@ -1,0 +1,67 @@
+/*********** variables **************/
+/*********** mixins *******************/
+@import "jquery.modal.min.css";
+.image-centered {
+  position: relative;
+}
+.image-centered img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  margin: auto;
+}
+.link-underlined {
+  text-decoration: underline;
+}
+.link-underlined:hover {
+  text-decoration: none;
+}
+.link-not-underlined {
+  text-decoration: none;
+}
+.link-not-underlined:hover {
+  text-decoration: underline;
+}
+.link-bg {
+  color: #000000;
+  background: #ffffff;
+}
+.link-bg:hover {
+  color: #ffffff;
+  background: #000000;
+}
+.animate,
+.animate:hover {
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+* {
+  padding: 0;
+  margin: 0;
+  outline: none;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #000000;
+  font-size: 14px;
+}
+.clearfix {
+  zoom: 1;
+  display: block;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+.wrap {
+  width: 1170px;
+  margin: 0 auto;
+}

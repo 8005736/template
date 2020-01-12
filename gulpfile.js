@@ -1,44 +1,33 @@
-var gulp = require('gulp');
-var pug = require('gulp-pug');
-var less = require('gulp-less');
-var browserSync = require('browser-sync').create();
-var concat = require('gulp-concat');
+"use strict";
 
-var plumber = require('gulp-plumber');
-var notify = require('gulp-notify');
+global.$ = {
+	tasks: [
+		'./gulp/tasks/clean',
+		'./gulp/tasks/pug',
+		'./gulp/tasks/serve',
+		'./gulp/tasks/styles',
+		'./gulp/tasks/watch'
+	],
+	gulp: require('gulp'),
+	del: require('del'),
+	browserSync: require('browser-sync').create()
+};
 
-/******* tasks ********/
-gulp.task('browserSync', function() {
-    browserSync.init({
-        server: "./"
-    });
-})
-gulp.task('pug', function() {
-    return gulp.src('pug/*.pug')
-
-        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-        .pipe(pug({
-            pretty: true
-        }))
-        .pipe(gulp.dest('./'))
-        .on("end", browserSync.reload)
+$.tasks.forEach(function (taskPath) {
+	require(taskPath)();
 });
 
-gulp.task('less', function() {
-    return gulp.src('style/*.less')
-    .pipe(concat('ready.less'))
-        .pipe(plumber({errorHandler: notify.onError("Error: <%= error.message %>")}))
-        .pipe(less())
-        .pipe(gulp.dest('css'))
-        .pipe(browserSync.reload({stream: true}))
-});
+$.gulp.task('dev', $.gulp.series(
+	'clean',
+	$.gulp.parallel(
+		'pug', 'styles'
+	)
+));
 
-/******* watch ********/
-gulp.task('watch', ['browserSync', 'pug', 'less'], function() {
-    gulp.watch("style/*.less", ['less']);
-    gulp.watch("pug/*.pug", ['pug']);
-    gulp.watch("pug/includes/*.pug", ['pug']);
-    gulp.watch('*.html', browserSync.reload);
-});
-/******* default ********/
-gulp.task('default', ['watch']);
+$.gulp.task('default', $.gulp.series(
+	'dev',
+	$.gulp.parallel(
+		'watch',
+		'serve'
+	)
+));
